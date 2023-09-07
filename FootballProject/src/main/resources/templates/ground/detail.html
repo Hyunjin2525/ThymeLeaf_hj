@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="we-help-section">
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-lg-7 mb-5 mb-lg-0">
+				<div class="imgs-grid">
+					<div class="grid grid-1"><img th:src="${vo.gimage}" alt="Untree.co"></div>
+					<div class="grid grid-2"><img th:src="${vo.gimage}" alt="Untree.co"></div>
+					<div class="grid grid-3"><img th:src="${vo.gimage}" alt="Untree.co"></div>
+				</div>
+			</div>
+			<div class="col-lg-5 ps-lg-5">
+				<h2 class="section-title mb-4" th:text="${vo.gname}"></h2>
+				<h5 class="section-title mb-4" th:text="${vo.gaddr}"></h5>
+				<pre th:text="${vo.gnotice}" style="white-space: pre-wrap;"></pre>
+				<div class="row" style="text-align: left;">
+					<p><a herf="#" class="btn" style="background-color: #3B5D50;border: none;">목록</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row text-center" style="margin-top: 10px;margin-bottom: 30px"><h4><strong>최근 본 구장</strong></h4></div>
+<div class="row">
+	
+		<div class="popular-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3" th:each="cvo:${ckList}">
+						<div class="product-item-sm d-flex">
+							<div class="thumbnail" style="  display: flex;justify-content: center;align-items: center;">
+								<img th:src="${cvo.gimage}" alt="Image" class="img-fluid" style="width: 120px;height: 68px;">
+							</div>
+							<div class="pt-3">
+								<h3 th:text="${cvo.gname}"></h3>
+								<p th:text="${cvo.gaddr}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

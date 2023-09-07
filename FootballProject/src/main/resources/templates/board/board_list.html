@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.page-link {
+  color: white; 
+  background-color: #3B5D50;
+  border-color: #3B5D50;
+}
+
+.page-item.active .page-link {
+ z-index: 1;
+ color: white;
+ font-weight:bold;
+ background-color: #4e7063;
+  border-color: #3B5D50;
+ 
+}
+
+.page-link:focus, .page-link:hover {
+  color: white;
+  background-color: #4e7063; 
+  border-color: #3B5D50;
+}
+</style>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	let x=(document.body.offsetWidth/2)-(450/2)
+	let y=(window.screen.height/2)-(600/2)-50
+	
+	$('#insert').click(function(){
+		window.open("/board/board_insert","",'width=550, height=700, left='+x+', top='+y+',scrollbar=no')
+	});
+	
+	
+	});
+</script>
+</head>
+<body>
+<div class="hero" style="height: 300px;">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-lg-5">
+					<div class="intro-excerpt">
+						<h1>자유게시판</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="wrapper row3" style="margin-top: 40px;">
+  <main class="container clear"> 
+
+    <table class="table">
+    		<td>
+    			<a class="btn btn-sm btn-primary" id="insert">새글</a>
+    		</td>
+    	</tr>
+    </table>
+    <table class="table">
+    	<tr>
+    		<th width=10% class="text-center">번호</th>
+    		<th width=45% class="text-center">제목</th>
+    		<th width=15% class="text-center">이름</th>
+    		<th width=20% class="text-center">작성일</th>
+    		<th width=10% class="text-center">조회수</th>
+    	</tr>
+    	<tr th:each="vo:${list}">
+    		<td width=10% class="text-center" th:text="${vo.no}"></td>
+    		<td width=45%><a th:href="@{/board/board_detail(no=${vo.no})}" th:text="${vo.subject}" style="text-decoration-line: none;"></a></td>
+    		<td width=15% class="text-center" th:text="${vo.name}"></td>
+    		<td width=20% class="text-center" th:text="${vo.regdate}"></td>
+    		<td width=10% class="text-center" th:text="${vo.hit}"></td>
+    	</tr>
+    </table>
+    <table class="table">
+    	<tr>
+    		<td colspan="5" class="text-center">
+    			<nav aria-label="Page navigation example" style="color: black">
+			  <ul class="pagination justify-content-center">
+			    <li class="page-item" th:if="${startpage>1}">
+			      <a class="page-link" th:href="@{/board/board_list(page=${startpage+1})}" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <li th:class="${i==curpage?'page-item active':'page-item'}" th:each="i:${#numbers.sequence(startpage,endpage)}"><a class="page-link" href="#" th:text="${i}" th:href="@{/board/board_list(page=${i})}"></a></li>
+			    <li class="page-item" th:if="${endpage<totalpage}">
+			      <a class="page-link" th:href="@{/board/board_list(page=${endpage-1})}" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>	
+			    </li>
+			  </ul>
+			</nav>
+    		</td>
+    	</tr>
+    </table>
+  </main>
+</div>
+</body>
+</html>

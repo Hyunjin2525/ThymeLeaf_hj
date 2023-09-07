@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="hero" style="background-image: url('images/soccermain.jpg');background-repeat : no-repeat;
+        background-size : cover;">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-lg-5">
+					<div class="intro-excerpt">
+						<h1>We Are<span class="d-block">GoodFootball<span>.</span></span></h1>
+						<p class="mb-4">풋살장 찾기 힘들 때 풋살장 정보들을 한 곳에서 한번에 볼 수 있는 
+										<br>풋볼 웹사이트 GoodFootbal<span>.</span></p>
+						<p><a href="" class="btn btn-secondary me-2">Go Ground</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<div class="blog-section">
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-md-6">
+				<h2 class="section-title">인기 풋살장</h2>
+			</div>
+			<div class="col-md-6 text-start text-md-end">
+				<a href="/ground/list" class="more">View All Ground</a>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0" th:each="vo:${list}">
+				<div class="post-entry">
+					<a th:href="@{/ground/detail(gno=${vo.gno})}" class="post-thumbnail"><img th:src="${vo.gimage}" alt="Image" class="img-fluid" style="width: 456px;height: 250px"></a>
+					<div class="post-content-entry">
+						<h3><a th:href="@{/ground/detail(gno=${vo.gno})}" th:text="${vo.gname}"></a></h3>
+						<div class="meta">
+							<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                      </svg></span> <span th:text="${vo.gaddr}"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="why-choose-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-6">
+						<h2 class="section-title">인기 게시판</h2>
+						<p>조회수가 가장 많은 게시물 Top4</p>
+
+						<div class="row my-5" >
+							<div class="col-6 col-md-6" th:each="bvo:${blist}">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/bag.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3 th:text="${bvo.subject}"></h3>
+									<p th:text="${bvo.content}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-5">
+						<div class="img-wrap">
+							<img src="images/football_2797.jpeg" alt="Image" class="img-fluid">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+</body>
+</html>

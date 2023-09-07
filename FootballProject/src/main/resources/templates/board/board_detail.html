@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	let x=(document.body.offsetWidth/2)-(450/2)
+	let y=(window.screen.height/2)-(600/2)-50
+ 	let no=$('#no').text()
+	$('#update').click(function(){
+		window.open("/board/board_update?no="+no,"",'width=550, height=700, left='+x+', top='+y+',scrollbar=no')
+	});
+	$('#delete').click(function(){
+		window.open("/board/board_delete?no="+no,"",'width=450, height=300, left='+x+', top='+y+',scrollbar=no')
+	});
+	
+	});
+</script>
+</head>
+<body>
+
+<div class="hero" style="height: 300px;">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-lg-5">
+					<div class="intro-excerpt">
+						<h1>자유게시판</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="wrapper row3" style="margin-top: 40px;text-align: center;">
+  <main class="container clear"> 
+    <h2 class="sectiontitle" style="margin-bottom: 30px"><strong>내용보기</strong></h2>
+    <table class="table">
+    	<tr>
+    		<th width=20% class="text-center">번호</th>
+    		<td width=20% class="text-center" th:text="${vo.no}" id=no></td>
+    		<th width=20% class="text-center">작성일</th>
+    		<td width=20% class="text-center" th:text="${vo.regdate}"></td>
+    	</tr>
+    	<tr>
+    		<th width=20% class="text-center">이름</th>
+    		<td width=20% class="text-center" th:text="${vo.name}"></td>
+    		<th width=20% class="text-center">조회수</th>
+    		<td width=20% class="text-center" th:text="${vo.hit}"></td>
+    	</tr>
+    	<tr>
+    		<th width=20% class="text-center">제목</th>
+    		<td colspan="3" th:text="${vo.subject}"></td>
+    	</tr>
+    	<tr>
+    		<td colspan="4" class="text-left" valign="top" height="200">
+    			<pre style="white-sapce:prewrap;border:none" th:text="${vo.content}"></pre>
+    		</td>
+    	</tr>
+    </table>
+    <table class="table">
+    	<tr>
+    		<td colspan="4" class="text-center">
+           		<a id="update" class="btn btn-primary-hover-outline" style="width: 87px;height: 40px;font-size:12px;background-color:  #3B5D50">수정</a>
+           		<a href="/board/board_list" class="btn btn-primary-hover-outline" style="width: 87px;height: 40px;font-size:12px; background-color:  #3B5D50">목록</a>
+           		<a id="delete" class="btn btn-primary-hover-outline" style="width: 87px;height: 40px;font-size:12px; background-color:  #3B5D50">삭제</a>
+    		</td>
+    	</tr>
+    </table>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.page-link {
+  color: white; 
+  background-color: #3B5D50;
+  border-color: #3B5D50;
+}
+
+.page-item.active .page-link {
+ z-index: 1;
+ color: white;
+ font-weight:bold;
+ background-color: #4e7063;
+  border-color: #3B5D50;
+ 
+}
+
+.page-link:focus, .page-link:hover {
+  color: white;
+  background-color: #4e7063; 
+  border-color: #3B5D50;
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="blog-section">
+	<div class="container">
+		<form method="post" action="/ground/list">
+			<div class="row" style="margin-bottom: 30px">
+				<div class="col-lg-3">
+					<div class="subscription-form">
+						<div class="col-auto">
+							<input type="text" name="fd" class="form-control" th:value="${fd}" placeholder="풋살장명 검색">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3" style="margin-left: -20px">
+					<div class="subscription-form">
+					<div class="col-auto">
+							<button class="btn btn-primary"> 검색</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</form>
+	<div class="row">
+		<div class="col-12 col-sm-6 col-md-4 mb-5" th:each="vo:${list}">
+			<div class="post-entry">
+				<a th:href="@{/ground/detail(gno=${vo.gno})}" class="post-thumbnail"><img th:src="${vo.gimage}" class="img-fluid" style="width: 400px;height: 250px"></a>
+						<div class="post-content-entry">
+							<h3><a th:text="${vo.gname}" th:href="@{/ground/detail(gno=${vo.gno})}"></a></h3>
+							<div class="meta">
+								<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                      </svg></span> <span><a href="#" th:text="${vo.gaddr}"></a></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav aria-label="Page navigation example" style="color: black">
+			  <ul class="pagination justify-content-center">
+			    <li class="page-item" th:if="${startpage>1}">
+			      <a class="page-link" th:href="@{/ground/list(page=${startpage-1},fd=${fd})}" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <li th:class="${i==curpage?'page-item active':'page-item'}" th:each="i:${#numbers.sequence(startpage,endpage)}"><a class="page-link" href="#" th:text="${i}" th:href="@{/ground/list(page=${i},fd=${fd})}"></a></li>
+			    <li class="page-item" th:if="${endpage<totalpage}">
+			      <a class="page-link" th:href="@{/ground/list(page=${endpage+1},fd=${fd})}" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>	
+			    </li>
+			  </ul>
+			</nav>
+		</div>
+	</div>
+</body>
+</html>
