@@ -111,6 +111,10 @@ public class BoardController {
 		vo.setHit(vo.getHit()+1);
 		dao.save(vo);//update => save() : update,insert
 		vo=dao.findByNo(no);
+		
+		String[] date=vo.getRegdate().split(" ");
+		vo.setRegdate(date[0].trim());
+			
 		model.addAttribute("vo",vo);
 		model.addAttribute("main_html","board/board_detail");
 		return "main";
