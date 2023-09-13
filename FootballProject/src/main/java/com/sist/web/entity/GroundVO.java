@@ -13,7 +13,7 @@ GNAME text
 GADDR text 
 GIMAGE text 
 GNOTICE text 
-GPRICE int
+GPRICE int 
  */
 @Entity
 @Table(name = "ground_detail")

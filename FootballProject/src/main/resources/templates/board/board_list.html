@@ -61,7 +61,7 @@ $(document).ready(function(){
     			<a class="btn btn-sm btn-primary" id="insert">새글</a>
     		</td>
     	</tr>
-    </table>
+    </table> 
     <table class="table">
     	<tr>
     		<th width=10% class="text-center">번호</th>
@@ -84,13 +84,13 @@ $(document).ready(function(){
     			<nav aria-label="Page navigation example" style="color: black">
 			  <ul class="pagination justify-content-center">
 			    <li class="page-item" th:if="${startpage>1}">
-			      <a class="page-link" th:href="@{/board/board_list(page=${startpage+1})}" aria-label="Previous">
+			      <a class="page-link" th:href="@{/board/board_list(page=${startpage-1})}" aria-label="Previous">
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
 			    <li th:class="${i==curpage?'page-item active':'page-item'}" th:each="i:${#numbers.sequence(startpage,endpage)}"><a class="page-link" href="#" th:text="${i}" th:href="@{/board/board_list(page=${i})}"></a></li>
 			    <li class="page-item" th:if="${endpage<totalpage}">
-			      <a class="page-link" th:href="@{/board/board_list(page=${endpage-1})}" aria-label="Next">
+			      <a class="page-link" th:href="@{/board/board_list(page=${endpage+1})}" aria-label="Next">
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>	
 			    </li>

@@ -23,7 +23,7 @@ import com.sist.web.entity.GroundVO;
 @Controller
 @RequestMapping("ground/")
 public class FootballController {
-	@Autowired
+	@Autowired 
 	private GroundDAO dao;
 	
 	@RequestMapping("list")

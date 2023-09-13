@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @DynamicUpdate
-public class BoardVO {
+public class BoardVO { 
 	@Id
 	private int no;
 	private String name,subject,content;

@@ -17,7 +17,7 @@ import com.sist.web.entity.GroundVO;
 public class MainController {
 	@Autowired
 	private GroundDAO dao;
-	@Autowired
+	@Autowired 
 	private BoardDAO bdao;
 	@GetMapping("/")
 	public String main(Model model)

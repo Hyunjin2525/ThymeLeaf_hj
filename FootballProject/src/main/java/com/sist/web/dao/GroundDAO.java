@@ -15,7 +15,7 @@ public interface GroundDAO extends JpaRepository<GroundVO, Integer>{
 	
 	@Query(value ="SELECT * FROM ground_detail ORDER BY hit DESC LIMIT 0,3" ,nativeQuery = true)
 	public List<GroundVO> ground_main();
-	
+	 
 	@Query(value ="SELECT * FROM ground_detail WHERE gname LIKE CONCAT('%',:gname,'%') ORDER BY gno LIMIT :start,9" ,nativeQuery = true)
 	public List<GroundVO> ground_list_find(@Param("gname") String gname,@Param("start") int start);
 	

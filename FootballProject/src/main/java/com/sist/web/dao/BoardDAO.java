@@ -12,7 +12,7 @@ import com.sist.web.entity.BoardVO;
 public interface BoardDAO extends JpaRepository<BoardVO, Integer>{
 	@Query(value = "SELECT * FROM board ORDER BY no DESC LIMIT :start,10",nativeQuery = true)
 	public List<BoardVO> board_list(Integer start);
-	
+	 
 	@Query(value = "SELECT CEIL(COUNT(*)/10.0) FROM board",nativeQuery = true)
 	public int board_total();
 	

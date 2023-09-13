@@ -26,7 +26,7 @@ public class BoardController {
 	@GetMapping("board_list")
 	public String board_list(Model model,String page)
 	{
-		if(page==null)
+		if(page==null) 
 			page="1";
 			int curpage=Integer.parseInt(page);
 			int start=(10*curpage)-10;
